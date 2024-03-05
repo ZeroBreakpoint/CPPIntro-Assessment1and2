@@ -44,12 +44,19 @@ size_t String::Length() const  // Returns an integer representing the count of c
 
 char& String::CharacterAt(size_t _index)  // Returns a char representing the character at the location. If index is less than 0 or greater than length, return '\0'
 {
+	if (_index >= Length() || _index < 0)
+		return data[Length()]; // return the null terminator
+	else
 		return data[_index];
 }
 
 const char& String::CharacterAt(size_t _index) const
 {
-	return data[_index];
+	// If index is out of bounds, return '\0'
+	if (_index >= Length() || _index < 0)
+		return data[Length()]; // return the null terminator
+	else
+		return data[_index];
 }
 
 bool String::EqualTo(const String& _other) const  // Returns true if str contains the same characters
@@ -111,16 +118,24 @@ size_t String::Find(const String& _str)  // Returns the location of the findStri
 	if (found != nullptr) {
 		return found - data;
 	}
+	else
+	{
 		return -1;
+	}
 }
 
 size_t String::Find(size_t _startIndex, const String& _str)  // Returns the location of the strToFind. Beginning the search from startIndex. If not found, return -1
 {
-	char* found = strstr(data + _startIndex, _str.data);
+	const char* strToFind = _str.CStr(); 
+	size_t length = Length();
+	if (_startIndex >= length)
+		return static_cast<size_t>(-1); 
+
+	char* found = strstr(data + _startIndex, strToFind); 
 	if (found != nullptr) {
-		return found - data;
+		return found - data; 
 	}
-		return -1;
+	return static_cast<size_t>(-1);
 }
 
 String& String::Replace(const String& _find, const String& _replace)  // Replaces all occurrences of findString with replaceString

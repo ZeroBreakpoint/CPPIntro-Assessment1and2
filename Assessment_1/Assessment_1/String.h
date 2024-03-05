@@ -2,7 +2,6 @@
 #ifndef CUSTOM_STRING_HEADER
 #define CUSTOM_STRING_HEADER
 
-
 class String
 {
 public:
