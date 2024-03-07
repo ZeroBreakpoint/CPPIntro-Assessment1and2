@@ -146,5 +146,12 @@ int main() {
     cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
     cout << '\n';
 
+
+
+    helloTwo = worldTwo;  // Using the assignment operator to replace 'Hello, ' string with 'World' string (using its' definition and contents from String.h & String.cpp to do so)
+    cout << "Testing the 'assignment operator' function to replace the 'Hello, ' string with the 'World' string we have: " << helloTwo.CStr() << endl;
+    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+    cout << '\n';
+
     system("pause");
 }
